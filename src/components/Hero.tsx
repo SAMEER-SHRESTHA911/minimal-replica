@@ -4,10 +4,10 @@ export default function Hero() {
       <picture className="absolute inset-0 -z-1">
         <source
           media="(min-width: 768px)"
-          srcSet="https://images.pexels.com/photos/16582072/pexels-photo-16582072.jpeg?auto=compress&cs=tinysrgb&w=2000"
+          srcSet="https://images.pexels.com/photos/16180641/pexels-photo-16180641.jpeg?auto=compress&cs=tinysrgb&w=2000"
         />
         <img
-          src="https://images.pexels.com/photos/16582072/pexels-photo-16582072.jpeg?auto=compress&cs=tinysrgb&w=1000"
+          src="https://images.pexels.com/photos/16180641/pexels-photo-16180641.jpeg?auto=compress&cs=tinysrgb&w=1000"
           alt="about:blank"
           className="size-full object-cover"
           loading="eager"
@@ -25,7 +25,7 @@ export default function Hero() {
           <p className="font-moderat text-xs">exclusively available online:</p>
           <a
             href="/"
-            className="inline-flex items-center justify-center border border-white text-white text-xs px-xs py-xxs mt-xxxs hover:opacity-80 transition-opacity"
+            className="inline-block border border-white text-white text-xs px-xxs py-[2px] mt-xxxs hover:opacity-80 transition-opacity"
           >
             shop:now
           </a>

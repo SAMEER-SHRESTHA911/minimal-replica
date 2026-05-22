@@ -472,22 +472,22 @@ export const products: Product[] = [
 export const banners: Banner[] = [
   {
     id: 'b1',
-    src: 'https://images.pexels.com/photos/5325768/pexels-photo-5325768.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    alt: 'about:blank fashion model white shirt',
+    src: 'https://images.pexels.com/photos/14823052/pexels-photo-14823052.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    alt: 'about:blank casual style model tshirt jeans',
     title: 'spring:summer \'26',
     subtitle: 'now available in-store and online',
   },
   {
     id: 'b2',
-    src: 'https://images.pexels.com/photos/9821877/pexels-photo-9821877.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    alt: 'about:blank fashion editorial',
+    src: 'https://images.pexels.com/photos/17781171/pexels-photo-17781171.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    alt: 'about:blank model in t-shirt and jeans',
     title: 'core:collection',
     subtitle: 'timeless essentials for every wardrobe',
   },
   {
     id: 'b3',
-    src: 'https://images.pexels.com/photos/1343522/pexels-photo-1343522.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    alt: 'about:blank fashion portrait',
+    src: 'https://images.pexels.com/photos/5842846/pexels-photo-5842846.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    alt: 'about:blank casual look',
     title: 'flatlist eyewear',
     subtitle: 'NOT FOR EVERYONE // exclusively online',
   },

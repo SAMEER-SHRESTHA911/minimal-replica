@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import type { Product } from '@/data/products';
+import { useCart } from '@/context/CartContext';
 
 const ALL_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
@@ -9,6 +10,8 @@ export default function ProductCard({ product }: { product: Product }) {
   const uid = `qb-${product.id}`;
   const [lookMode, setLookMode] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [selectedSize, setSelectedSize] = useState('');
+  const { addItem } = useCart();
 
   useEffect(() => {
     const stored = sessionStorage.getItem('ab_collection_view');
@@ -55,7 +58,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Circular plus button */}
         <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-xxs translate-y-full group-hover:translate-y-0 transition-transform duration-280 max-md:translate-y-0">
-          <label htmlFor={uid} className="cursor-pointer" aria-label="Quick add">
+          <label htmlFor={uid} className="cursor-pointer" aria-label="Quick add" onClick={() => setSelectedSize('')}>
             <svg width="21" height="20" fill="none" viewBox="0 0 21 20">
               <rect width="20" height="20" x=".75" fill="#fff" fillOpacity=".6" rx="10" />
               <path fill="#000" d="M10.25 14.5h1v-4h4v-1h-4v-4h-1v4h-4v1h4z" />
@@ -70,6 +73,7 @@ export default function ProductCard({ product }: { product: Product }) {
               onClick={() => {
                 const cb = document.getElementById(uid) as HTMLInputElement;
                 if (cb) cb.checked = false;
+                setSelectedSize('');
               }}
               className="p-xs absolute right-0 top-0 bg-transparent cursor-pointer z-10"
             >
@@ -113,7 +117,7 @@ export default function ProductCard({ product }: { product: Product }) {
                     className="border border-grey-80 hover:border-grey-45 hover:bg-grey-15 px-xs py-xxs text-xs uppercase cursor-pointer transition-colors has-checked:border-black has-checked:bg-black has-checked:text-white"
                   >
                     <span>{size}</span>
-                    <input type="radio" name={`size-${uid}`} value={size} className="peer hidden" />
+                    <input type="radio" name={`size-${uid}`} value={size} className="peer hidden" onChange={() => setSelectedSize(size)} />
                   </label>
                 ))}
                 {sizesUnavailable.map((size) => (
@@ -126,17 +130,24 @@ export default function ProductCard({ product }: { product: Product }) {
 
             <div className="w-full bg-black text-white" style={{ fontSize: '0.75rem' }}>
               {product.sizes.length === 0 && (
-                <label htmlFor={uid} className="px-xs flex w-full items-center justify-between py-xxs cursor-pointer">
+                <button onClick={() => { addItem(product); const cb = document.getElementById(uid) as HTMLInputElement; if (cb) cb.checked = false; }} className="px-xs flex w-full items-center justify-between py-xxs cursor-pointer">
                   <div className="flex gap-x-xxs">{product.price}</div>
                   <div>add to bag</div>
-                </label>
+                </button>
               )}
 
               {product.sizes.length > 0 && (
-                <div className="px-xs flex w-full items-center justify-between py-xxs">
-                  <div className="flex gap-x-xxs">{product.price}</div>
-                  <div>select size</div>
-                </div>
+                selectedSize ? (
+                  <button onClick={() => { addItem(product, selectedSize); setSelectedSize(''); const cb = document.getElementById(uid) as HTMLInputElement; if (cb) cb.checked = false; }} className="px-xs flex w-full items-center justify-between py-xxs cursor-pointer">
+                    <div className="flex gap-x-xxs">{product.price}</div>
+                    <div>add to bag</div>
+                  </button>
+                ) : (
+                  <div className="px-xs flex w-full items-center justify-between py-xxs">
+                    <div className="flex gap-x-xxs">{product.price}</div>
+                    <div>select size</div>
+                  </div>
+                )
               )}
             </div>
           </div>
