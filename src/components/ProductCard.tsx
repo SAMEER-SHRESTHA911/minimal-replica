@@ -37,14 +37,14 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="relative overflow-hidden bg-placeholder" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
         <input type="checkbox" id={uid} className="peer hidden" />
 
-        <div className="aspect-[3/4] cursor-pointer">
+        <a href={product.href} className="block aspect-[3/4] cursor-pointer">
           <img
             src={currentImg}
             alt={product.name}
             className="size-full object-cover transition-opacity duration-280"
             loading="lazy"
           />
-        </div>
+        </a>
 
         {product.badge && (
           <span className="absolute top-0 left-0 p-0.5 text-grey-45">{product.badge}</span>
