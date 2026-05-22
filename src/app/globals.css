@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Selecta';
+  src: url('https://about---blank.com/cdn/shop/t/78/assets/Selecta-Regular.woff2?v=180021755661200734241752133313') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Moderat';
+  src: url('https://about---blank.com/cdn/shop/t/78/assets/Moderat-Bold.woff2?v=1886964978216561081752133311') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-grey-15: #262626;
+  --color-grey-45: #737373;
+  --color-grey-80: #cccccc;
+  --color-placeholder: #e1e1e1;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-selecta: 'Selecta', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-moderat: 'Moderat', 'Plus Jakarta Sans', 'Inter', Arial, sans-serif;
+
+  --spacing-xxxs: 0.35rem;
+  --spacing-xxs: 0.5rem;
+  --spacing-xs: 1rem;
+  --spacing-s: 2rem;
+  --spacing-m: 4rem;
+  --spacing-l: 6rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-card-gap: 0.5rem;
+
+  --nav-h: 4rem;
+  --logo-h: 1rem;
+  --banner-h: 1.5625rem;
+
+  --text-xxs: 0.75rem;
+  --text-xs: 0.875rem;
+  --text-s: 0.9375rem;
+  --text-m: 1.125rem;
+  --text-l: 3.75rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-selecta);
+  font-size: var(--text-xs);
+}
+
+/* Layout grid: 6 cols mobile, 12 cols desktop */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  padding-inline: var(--spacing-gutter);
+}
+
+@media (min-width: 768px) {
+  .grid-layout {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+  }
 }
